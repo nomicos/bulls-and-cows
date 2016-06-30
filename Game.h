@@ -11,11 +11,13 @@ class Game
 {
 private:
     int number;
+    int guess_counter;
 
 public:
     Game();
 
-    std::pair<int,int> guess(const int & g) const;
+    int getGuessCounter() const;
+    std::pair<int,int> guess(const int & g);
 };
 
 #endif // GAME_H_INCLUDED

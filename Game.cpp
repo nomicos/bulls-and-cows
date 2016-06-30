@@ -2,15 +2,23 @@
 
 Game::Game()
 {
+    this->guess_counter = 0;
+
     do
     {
         this->number = ( Random::get() % (9999 - 1000) ) + 1000;
     } while(!Number::correct(this->number));
 
-    std::cout << "A number has been chosen: " << this->number << std::endl;
+    std::cout << "A 4-digit number has been chosen. Try to guess." <<
+                 "\n>>> DEBUG: " << this->number << std::endl;
 }
 
-std::pair<int,int> Game::guess(const int & g) const
+int Game::getGuessCounter() const
+{
+    return this->guess_counter;
+}
+
+std::pair<int,int> Game::guess(const int & g)
 {
     // Function returning a pair of values:
     //   first - bulls (position hit)
@@ -47,5 +55,6 @@ std::pair<int,int> Game::guess(const int & g) const
         b /= 10;
     }
 
+    this->guess_counter++;
     return std::make_pair(bulls, cows);
 }

@@ -15,7 +15,16 @@ void Menu::ask(Game & g)
 
         auto result = g.guess(t);
         std::cout << "There are " << result.first << " bulls and " <<
-                     result.second << " cows in your guess.\n\n";
+                     result.second << " cows in your guess.\n";
+
+        if(result.first == 4)
+        {
+            std::cout << "You have guessed the number having used " <<
+            g.getGuessCounter() << " attempts.\nThank you for playing!\n\n";
+            break;
+        }
+
+        std::cout << std::endl;
     }
 
     return;
