@@ -4,10 +4,9 @@
 #include <algorithm>
 #include <vector>
 
-class Number
+namespace Number
 {
-public:
-    static bool correct(const int & t);
-};
+    bool correct(const int & t);
+}
 
 #endif // NUMBER_H_INCLUDED

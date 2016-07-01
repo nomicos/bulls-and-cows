@@ -4,11 +4,10 @@
 #include <algorithm>
 #include <ctime>
 
-class Random
+namespace Random
 {
-public:
-    static void init();
-    static int get();
-};
+    void init();
+    int get();
+}
 
 #endif // RANDOM_H_INCLUDED

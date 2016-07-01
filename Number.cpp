@@ -1,25 +1,29 @@
 #include "Number.h"
 
-bool Number::correct(const int & t)
+namespace Number
 {
-    if(t < 1000 || t > 9999)
+    bool correct(const int & t)
     {
-        return false;
-    }
-
-    std::vector<int> d;
-    int t_copy = t;
-    while(t_copy)
-    {
-        if(std::find(d.begin(), d.end(), t_copy % 10) != d.end())
+        if(t < 1000 || t > 9999)
         {
             return false;
         }
 
-        d.push_back(t_copy % 10);
+        std::vector<int> d;
+        int t_copy = t;
+        while(t_copy)
+        {
+            if(std::find(d.begin(), d.end(), t_copy % 10) != d.end())
+            {
+                return false;
+            }
 
-        t_copy /= 10;
+            d.push_back(t_copy % 10);
+
+            t_copy /= 10;
+        }
+
+        return true;
     }
-
-    return true;
 }
+

@@ -1,12 +1,16 @@
 #include "Random.h"
 
-void Random::init()
+namespace Random
 {
-    srand(time(nullptr));
-    rand(); // Skipping the first-ever generated number.
+    void init()
+    {
+        srand(time(nullptr));
+        rand(); // Skipping the first-ever generated number.
+    }
+
+    int get()
+    {
+        return rand();
+    }
 }
 
-int Random::get()
-{
-    return rand();
-}
