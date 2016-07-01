@@ -19,7 +19,7 @@ void Menu::ask(Game & g)
 
         if(result.first == 4)
         {
-            std::cout << "You have guessed the number having used " <<
+            std::cout << "\nYou have guessed the number having used " <<
             g.getGuessCounter() << " attempts.\nThank you for playing!\n\n";
             break;
         }

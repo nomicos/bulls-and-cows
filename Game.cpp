@@ -10,7 +10,7 @@ Game::Game()
     } while(!Number::correct(this->number));
 
     std::cout << "A 4-digit number has been chosen. Try to guess." <<
-                 "\n>>> DEBUG: " << this->number << std::endl;
+                 "\n>>> DEBUG: " << this->number << "\n\n";
 }
 
 int Game::getGuessCounter() const
@@ -41,7 +41,7 @@ std::pair<int,int> Game::guess(const int & g)
             int t = this->number;
             while(t)
             {
-                if(t % 10 == b)
+                if(t % 10 == b % 10)
                 {
                     cows++;
                     break;
