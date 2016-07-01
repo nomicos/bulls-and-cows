@@ -1,5 +1,21 @@
 #include "Game.h"
 
+const std::string Game::intro =
+    "Welcome to the BULLS AND COWS game!\n\n"
+    "The computer has just chosen a random 4-digit number. Your task\n"
+    "is to guess the number using as less attempts as possible. Each\n"
+    "time you make a guess, the computer will give you two hint numbers:\n"
+    "'bulls' and 'cows' which represent how many digits your number\n"
+    "and the number chosen by the computer have in common. Moreover,\n"
+    "if you guessed not only a number but its position as well, that\n"
+    "would make a 'bull'; if you got the digit right but it is actually\n"
+    "in a position different than you suggested, that counts as a 'cow'.\n"
+    "\nNote that the chosen number satisfies the following condition:\n"
+    "1000 <= num <= 9999. Thus it only makes sense for your guesses to\n"
+    "be in the same range (otherwise the guess will be discarded)\n"
+    "\nPlease refer to the Wikipedia article for more details:\n"
+    "https://en.wikipedia.org/wiki/Bulls_and_cows\n\n";
+
 Game::Game()
 {
     this->guess_counter = 0;
@@ -9,8 +25,7 @@ Game::Game()
         this->number = ( Random::get() % (9999 - 1000) ) + 1000;
     } while(!Number::correct(this->number));
 
-    std::cout << "A 4-digit number has been chosen. Try to guess." <<
-                 "\n>>> DEBUG: " << this->number << "\n\n";
+    std::cout << this->intro;
 }
 
 int Game::getGuessCounter() const

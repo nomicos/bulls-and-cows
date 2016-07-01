@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <utility>
+#include <string>
 
 #include "Random.h"
 #include "Number.h"
@@ -12,6 +13,8 @@ class Game
 private:
     int number;
     int guess_counter;
+
+    static const std::string intro;
 
 public:
     Game();
