@@ -3,7 +3,7 @@
 const std::string Game::intro =
     "Welcome to the BULLS AND COWS game!\n\n"
     "The computer has just chosen a random 4-digit number. Your task\n"
-    "is to guess the number using as less attempts as possible. Each\n"
+    "is to guess the number using as few attempts as possible. Each\n"
     "time you make a guess, the computer will give you two hint numbers:\n"
     "'bulls' and 'cows' which represent how many digits your number\n"
     "and the number chosen by the computer have in common. Moreover,\n"
@@ -12,7 +12,7 @@ const std::string Game::intro =
     "in a position different than you suggested, that counts as a 'cow'.\n"
     "\nNote that the chosen number satisfies the following condition:\n"
     "1000 <= num <= 9999. Thus it only makes sense for your guesses to\n"
-    "be in the same range (otherwise the guess will be discarded)\n"
+    "be in the same range (otherwise a guess will be discarded).\n"
     "\nPlease refer to the Wikipedia article for more details:\n"
     "https://en.wikipedia.org/wiki/Bulls_and_cows\n\n";
 
