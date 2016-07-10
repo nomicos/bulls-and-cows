@@ -10,7 +10,7 @@ const std::string Game::intro =
     "if you guessed not only a digit but its position as well, that\n"
     "would make a 'bull'; if you got the digit right but it is actually\n"
     "in a position different than you suggested, that counts as a 'cow'.\n"
-    "\nNote that the guessed number is always composed of four digits\n"
+    "\nNote that the chosen number is always composed of four digits\n"
 	"each one of which is different from the others. The first digit is\n"
 	"different from zero. All invalid guessed will be discarded.\n"
     "\nPlease refer to the Wikipedia article for more details:\n"
