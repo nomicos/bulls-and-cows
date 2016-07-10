@@ -7,12 +7,12 @@ const std::string Game::intro =
     "time you make a guess, the computer will give you two hint numbers:\n"
     "'bulls' and 'cows' which represent how many digits your number\n"
     "and the number chosen by the computer have in common. Moreover,\n"
-    "if you guessed not only a number but its position as well, that\n"
+    "if you guessed not only a digit but its position as well, that\n"
     "would make a 'bull'; if you got the digit right but it is actually\n"
     "in a position different than you suggested, that counts as a 'cow'.\n"
-    "\nNote that the chosen number satisfies the following condition:\n"
-    "1000 <= num <= 9999. Thus it only makes sense for your guesses to\n"
-    "be in the same range (otherwise a guess will be discarded).\n"
+    "\nNote that the guessed number is always composed of four digits\n"
+	"each one of which is different from the others. The first digit is\n"
+	"different from zero. All invalid guessed will be discarded.\n"
     "\nPlease refer to the Wikipedia article for more details:\n"
     "https://en.wikipedia.org/wiki/Bulls_and_cows\n\n";
 
