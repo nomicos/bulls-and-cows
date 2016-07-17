@@ -21,6 +21,7 @@ private:
 public:
     Game();
 
+    void prompt();
 };
 
 #endif // GAME_H_INCLUDED

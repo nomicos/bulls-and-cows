@@ -1,8 +1,8 @@
 #include <iostream>
+#include <limits>
 
 #include "RandomGenerator.hpp"
 #include "Game.hpp"
-#include "Menu.hpp"
 
 int main()
 {
@@ -12,11 +12,10 @@ int main()
     // Initializing a game instance.
     Game g;
 
-    // Entering menu for that game.
-    Menu::ask(g);
+    // Calling the main menu (input prompt loop).
+    g.prompt();
 
-    // Freeze the screen (twice because no cin.ignore yet).
-    std::cin.get();
+    // Freezing the screen.
     std::cin.get();
 
     return 0;

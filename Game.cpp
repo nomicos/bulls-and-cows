@@ -25,7 +25,7 @@ const std::string Game::intro =
     "in a position different than you suggested, that counts as a 'cow'.\n"
     "\nNote that the chosen number is always composed of four digits\n"
 	"each one of which is different from the others. The first digit is\n"
-	"different from zero. All invalid guessed will be discarded.\n"
+	"different from zero. All invalid inputs will be discarded.\n"
     "\nPlease refer to the Wikipedia article for more details:\n"
     "https://en.wikipedia.org/wiki/Bulls_and_cows\n\n";
 
@@ -58,6 +58,9 @@ bool Game::isCorrectNumber(int n)
 
 Game::ResultBC Game::checkGuess(int g)
 {
+    // The function is only called for valid inputs, so a guess counts.
+    ++guessCounter;
+
     if(g == chosenNumber)
     {
         return ResultBC(4,0);
@@ -95,55 +98,65 @@ Game::ResultBC Game::checkGuess(int g)
 
 Game::Game()
 {
-    this->guessCounter = 0;
+    guessCounter = 0;
 
     do
     {
-        this->chosenNumber = RandomGenerator::getRandomNumber(1000, 9999);
-    } while(!(this->chosenNumber));
+        chosenNumber = RandomGenerator::getRandomNumber(1000, 9999);
+    } while(!isCorrectNumber(chosenNumber));
 
-    std::cout << this->intro;
+    std::cout << intro;
 }
 
-/*
-std::pair<int,int> Game::guess(const int & g)
+void Game::prompt()
 {
-    // Function returning a pair of values:
-    //   first - bulls (position hit)
-    //   second - cows (no position hit)
-
-    // 1000 <= g <= 9999
-
-    int a = this->number;
-    int b = g;
-    int bulls = 0, cows = 0;
-
-    while(a)
+    while(true)
     {
-        if(a % 10 == b % 10)
-        {
-            bulls++;
-        }
-        else
-        {
-            int t = this->number;
-            while(t)
-            {
-                if(t % 10 == b % 10)
-                {
-                    cows++;
-                    break;
-                }
+        int g;
+        std::cout << "Please enter your guess: ";
+        std::cin >> g;
 
-                t /= 10;
-            }
+        if(std::cin.fail() || !isCorrectNumber(g))
+        {
+            // Clearing error state and the rest of the garbage.
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
         }
 
-        a /= 10;
-        b /= 10;
+        // Get rid of any trailing data.
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        Game::ResultBC res = checkGuess(g);
+        std::cout << "There are " << res.bulls << " bulls and "
+                  << res.cows << " cows in your guess.\n";
+
+        if(res.bulls == 4)
+        {
+            std::cout << "\nYou have guessed the number!\nAttempts used: "
+                      << guessCounter;
+
+            if(guessCounter < 2)
+                std::cout << " (lucky you!)";
+            else if(guessCounter < 6)
+                std::cout << " (excellent!)";
+            else if(guessCounter < 10)
+                std::cout << " (well played!)";
+
+            std::cout << "\nThank you for playing!\n";
+
+            break;
+        }
+
+        // A little bit of game-over spirit.
+        if(guessCounter == 18)
+        {
+            std::cout << "\nYou have used 18 attempts! Game over :(\n"
+                      << "The number was " << chosenNumber << ".\n"
+                      << "Better luck next time. Thank you for playing!\n";
+            break;
+        }
+
+        std::cout << std::endl;
     }
-
-    this->guess_counter++;
-    return std::make_pair(bulls, cows);
 }
-*/
