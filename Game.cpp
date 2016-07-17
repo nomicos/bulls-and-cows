@@ -24,8 +24,8 @@ const std::string Game::intro =
     "would make a 'bull'; if you got the digit right but it is actually\n"
     "in a position different than you suggested, that counts as a 'cow'.\n"
     "\nNote that the chosen number is always composed of four digits\n"
-	"each one of which is different from the others. The first digit is\n"
-	"different from zero. All invalid inputs will be discarded.\n"
+    "each one of which is different from the others. The first digit is\n"
+    "different from zero. All invalid inputs will be discarded.\n"
     "\nPlease refer to the Wikipedia article for more details:\n"
     "https://en.wikipedia.org/wiki/Bulls_and_cows\n\n";
 
@@ -82,7 +82,7 @@ Game::ResultBC Game::checkGuess(int g)
             {
                 if(t % 10 == g % 10)    // ...but found somewhere else...
                 {
-                    res.cows++;             // cows++.
+                    res.cows++;         // cows++.
                     break;
                 }
                 t /= 10;

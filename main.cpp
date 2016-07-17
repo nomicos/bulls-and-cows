@@ -1,5 +1,4 @@
 #include <iostream>
-#include <limits>
 
 #include "RandomGenerator.hpp"
 #include "Game.hpp"
