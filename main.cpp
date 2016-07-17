@@ -1,23 +1,21 @@
 #include <iostream>
+#include <limits>
 
-#include "Random.h"
-#include "Number.h"
-#include "Game.h"
-#include "Menu.h"
+#include "RandomGenerator.hpp"
+#include "Game.hpp"
 
 int main()
 {
     // Initializing random seed.
-    Random::init();
+    RandomGenerator::initSeed();
 
     // Initializing a game instance.
     Game g;
 
-    // Entering menu for that game.
-    Menu::ask(g);
+    // Calling the main menu (input prompt loop).
+    g.prompt();
 
-    // Freeze the screen; dunno why one cin.get() doesn't work.
-    std::cin.get();
+    // Freezing the screen.
     std::cin.get();
 
     return 0;

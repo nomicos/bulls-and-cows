@@ -1,26 +1,27 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
-#include <iostream>
-#include <utility>
 #include <string>
 
-#include "Random.h"
-#include "Number.h"
+#include "RandomGenerator.hpp"
 
 class Game
 {
 private:
-    int number;
-    int guess_counter;
+    struct ResultBC;      // Results of the guess (bulls & cows).
 
     static const std::string intro;
+
+    int chosenNumber;
+    int guessCounter;
+
+    bool isCorrectNumber(int n);
+    ResultBC checkGuess(int g);
 
 public:
     Game();
 
-    int getGuessCounter() const;
-    std::pair<int,int> guess(const int & g);
+    void prompt();
 };
 
 #endif // GAME_H_INCLUDED
