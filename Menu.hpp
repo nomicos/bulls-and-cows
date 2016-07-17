@@ -2,7 +2,6 @@
 #define MENU_H_INCLUDED
 
 #include "Game.hpp"
-#include "Number.hpp"
 
 class Menu
 {

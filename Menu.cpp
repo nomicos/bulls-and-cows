@@ -5,20 +5,20 @@
 
 void Menu::ask(Game & g)
 {
-    while(true)
+    /*while(true)
     {
         int t;
         std::cout << "Please enter your guess: ";
         std::cin >> t;
 
-        if(std::cin.fail() || !Number::correct(t))
+        if(std::cin.fail()) // OR NUMBER IS INCORRECT
         {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             continue;
         }
 
-        auto result = g.guess(t);
+        auto result = t; // Nonsense here.
         std::cout << "There are " << result.first << " bulls and " <<
                      result.second << " cows in your guess.\n";
 
@@ -30,7 +30,7 @@ void Menu::ask(Game & g)
         }
 
         std::cout << std::endl;
-    }
+    }*/
 
     return;
 }
