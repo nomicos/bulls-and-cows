@@ -1,4 +1,6 @@
-#include "Game.h"
+#include <iostream>
+
+#include "Game.hpp"
 
 const std::string Game::intro =
     "Welcome to the BULLS AND COWS game!\n\n"
@@ -22,7 +24,7 @@ Game::Game()
 
     do
     {
-        this->number = ( Random::get() % (9999 - 1000) ) + 1000;
+        this->number = RandomGenerator::getRandomNumber(1000, 9999);
     } while(!Number::correct(this->number));
 
     std::cout << this->intro;

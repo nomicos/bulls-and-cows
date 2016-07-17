@@ -1,4 +1,7 @@
-#include "Number.h"
+#include <algorithm>
+#include <vector>
+
+#include "Number.hpp"
 
 namespace Number
 {

@@ -1,14 +1,14 @@
 #include <iostream>
 
-#include "Random.h"
-#include "Number.h"
-#include "Game.h"
-#include "Menu.h"
+#include "RandomGenerator.hpp"
+#include "Number.hpp"
+#include "Game.hpp"
+#include "Menu.hpp"
 
 int main()
 {
     // Initializing random seed.
-    Random::init();
+    RandomGenerator::initSeed();
 
     // Initializing a game instance.
     Game g;

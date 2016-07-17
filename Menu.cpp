@@ -1,4 +1,7 @@
-#include "Menu.h"
+#include <iostream>
+#include <limits>
+
+#include "Menu.hpp"
 
 void Menu::ask(Game & g)
 {

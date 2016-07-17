@@ -1,10 +1,8 @@
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
 
-#include <iostream>
-
-#include "Game.h"
-#include "Number.h"
+#include "Game.hpp"
+#include "Number.hpp"
 
 class Menu
 {

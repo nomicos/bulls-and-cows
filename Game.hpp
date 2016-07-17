@@ -1,12 +1,11 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
-#include <iostream>
 #include <utility>
 #include <string>
 
-#include "Random.h"
-#include "Number.h"
+#include "RandomGenerator.hpp"
+#include "Number.hpp"
 
 class Game
 {
