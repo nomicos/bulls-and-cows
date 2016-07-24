@@ -12,6 +12,9 @@ private:
 
     static const std::string intro;
 
+    bool gameoverMode;
+    int gameoverLimit;
+
     int chosenNumber;
     int guessCounter;
 

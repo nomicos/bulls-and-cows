@@ -106,6 +106,10 @@ Game::Game()
     } while(!isCorrectNumber(chosenNumber));
 
     std::cout << intro;
+
+    // Attempt limit settings hardcoded:
+    gameoverMode = true;
+    gameoverLimit = 18;
 }
 
 void Game::prompt()
@@ -148,12 +152,11 @@ void Game::prompt()
             break;
         }
 
-        // A little bit of game-over spirit.
-        if(guessCounter == 18)
+        if(gameoverMode && guessCounter == gameoverLimit)
         {
-            std::cout << "\nYou have used 18 attempts! Game over :(\n"
-                      << "The number was " << chosenNumber << ".\n"
-                      << "Better luck next time. Thank you for playing!\n";
+            std::cout << "\nYou have used " << gameoverLimit << " attempts! "
+                      << "Game over :(\nThe number was " << chosenNumber
+                      << ".\nBetter luck next time. Thank you for playing!\n";
             break;
         }
 
