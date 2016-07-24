@@ -11,8 +11,10 @@ else
 	RM = rm -f
 endif
 
+VERSION = v1.1.1
+
 OBJS = main.o Game.o RandomGenerator.o
-TARGET = Bulls_and_Cows_v.1.1.0.exe
+TARGET = Bulls_and_Cows_$(VERSION).exe
 
 
 all: $(TARGET)
