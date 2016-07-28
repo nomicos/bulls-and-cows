@@ -59,34 +59,28 @@ bool Game::isCorrectNumber(int n)
 int Game::getUserInput()
 {
     int input;
-    while(true)
+    bool isValid;
+    do
     {
+        isValid = true; // Naive assumption.
+
         std::cout << "Please enter your guess: ";
         std::cin >> input;
 
-        if(std::cin.fail() || !isCorrectNumber(input))
-        {
-            // Clearing error state and the rest of the garbage.
+        if(std::cin.fail())
+        {   // If input's completely invalid...
+            // Clearing error state.
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            continue;
+            isValid = false;
         }
 
-        // Get rid of any trailing data.
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-        // cin.gcount() returns the number of characters left in
-        // the input stream after the last stream extraction operation.
-        // Ideally, it's supposed to equal 1, i.e. the newline char
-        // only. If there's something else (even a whitespace), the input
-        // is considered invalid and is ignored.
-        if(std::cin.gcount() > 1)
-        {
-            continue;
+        if(!isCorrectNumber(input) || std::cin.gcount() > 1)
+        {   // If incorrect number, or additional input...
+            isValid = false;
         }
-
-        break;
-    }
+    } while(!isValid);
     return input;
 }
 
@@ -148,39 +142,37 @@ Game::Game()
 
 void Game::menu()
 {
-    while(true)
+    bool isEnded = false;
+    do
     {
         int g = getUserInput();
-
         Game::ResultBC res = checkGuess(g);
         std::cout << "There are " << res.bulls << " bulls and "
                   << res.cows << " cows in your guess.\n";
 
         if(res.bulls == 4)
         {
-            std::cout << "\nYou have guessed the number!\nAttempts used: "
+            std::cout << "\nYou have guessed the number.\nAttempts used: "
                       << guessCounter;
 
             if(guessCounter < 2)
                 std::cout << " (lucky you!)";
-            else if(guessCounter < 6)
+            else if(guessCounter < 7)
                 std::cout << " (excellent!)";
             else if(guessCounter < 10)
                 std::cout << " (well played!)";
 
             std::cout << "\nThank you for playing!\n";
 
-            break;
+            isEnded = true;
         }
-
-        if(gameoverMode && guessCounter == gameoverLimit)
+        else if(gameoverMode && guessCounter == gameoverLimit)
         {
             std::cout << "\nYou have used " << gameoverLimit << " attempts! "
                       << "Game over :(\nThe number was " << chosenNumber
                       << ".\nBetter luck next time. Thank you for playing!\n";
-            break;
+            isEnded = true;
         }
-
         std::cout << std::endl;
-    }
+    } while(!isEnded);
 }
