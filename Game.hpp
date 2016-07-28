@@ -19,12 +19,13 @@ private:
     int guessCounter;
 
     bool isCorrectNumber(int n);
+    int getUserInput();
     ResultBC checkGuess(int g);
 
 public:
     Game();
 
-    void prompt();
+    void menu();
 };
 
 #endif // GAME_H_INCLUDED

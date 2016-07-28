@@ -11,8 +11,8 @@ int main()
     // Initializing a game instance.
     Game g;
 
-    // Calling the main menu (input prompt loop).
-    g.prompt();
+    // Calling the main menu.
+    g.menu();
 
     // Freezing the screen.
     std::cin.get();

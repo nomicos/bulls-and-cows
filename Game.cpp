@@ -56,6 +56,40 @@ bool Game::isCorrectNumber(int n)
     return true;
 }
 
+int Game::getUserInput()
+{
+    int input;
+    while(true)
+    {
+        std::cout << "Please enter your guess: ";
+        std::cin >> input;
+
+        if(std::cin.fail() || !isCorrectNumber(input))
+        {
+            // Clearing error state and the rest of the garbage.
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        // Get rid of any trailing data.
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        // cin.gcount() returns the number of characters left in
+        // the input stream after the last stream extraction operation.
+        // Ideally, it's supposed to equal 1, i.e. the newline char
+        // only. If there's something else (even a whitespace), the input
+        // is considered invalid and is ignored.
+        if(std::cin.gcount() > 1)
+        {
+            continue;
+        }
+
+        break;
+    }
+    return input;
+}
+
 Game::ResultBC Game::checkGuess(int g)
 {
     // The function is only called for valid inputs, so a guess counts.
@@ -112,32 +146,11 @@ Game::Game()
     gameoverLimit = 18;
 }
 
-void Game::prompt()
+void Game::menu()
 {
     while(true)
     {
-        int g;
-        std::cout << "Please enter your guess: ";
-        std::cin >> g;
-
-        if(std::cin.fail() || !isCorrectNumber(g))
-        {
-            // Clearing error state and the rest of the garbage.
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            continue;
-        }
-
-        // Get rid of any trailing data.
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-        // cin.gcount() returns the number of characters left in
-        // the input stream after the last stream extraction operation.
-        // Ideally, it's supposed to equal 1, i.e. the newline char
-        // only. If there's something else (even a whitespace), the input
-        // is considered invalid and is ignored.
-        if(std::cin.gcount() > 1)
-            continue;
+        int g = getUserInput();
 
         Game::ResultBC res = checkGuess(g);
         std::cout << "There are " << res.bulls << " bulls and "
