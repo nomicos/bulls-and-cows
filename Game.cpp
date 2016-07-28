@@ -131,6 +131,14 @@ void Game::prompt()
         // Get rid of any trailing data.
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
+        // cin.gcount() returns the number of characters left in
+        // the input stream after the last stream extraction operation.
+        // Ideally, it's supposed to equal 1, i.e. the newline char
+        // only. If there's something else (even a whitespace), the input
+        // is considered invalid and is ignored.
+        if(std::cin.gcount() > 1)
+            continue;
+
         Game::ResultBC res = checkGuess(g);
         std::cout << "There are " << res.bulls << " bulls and "
                   << res.cows << " cows in your guess.\n";
