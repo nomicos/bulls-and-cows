@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
 #include "Game.hpp"
 
@@ -64,9 +65,12 @@ int Game::getUserInput()
     do
     {
         isValid = true; // Naive assumption.
-
+        string rawInput;
         cout << "Please enter your guess: ";
-        cin >> input;
+        getline(cin, rawInput);
+
+        stringstream iss(rawInput);
+        iss >> input;
 
         if(cin.fail())
         {   // If input's completely invalid...
@@ -75,11 +79,14 @@ int Game::getUserInput()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             isValid = false;
         }
-
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        if(!isCorrectNumber(input) || cin.gcount() > 1)
+        if(rawInput.length() != 4 || !isCorrectNumber(input))
         {   // If incorrect number, or additional input...
             isValid = false;
+        }
+
+        if(!isValid)
+        {
+            cout << "Invalid input. Try again.\n\n";
         }
     } while(!isValid);
     return input;
