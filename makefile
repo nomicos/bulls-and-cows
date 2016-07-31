@@ -2,7 +2,7 @@
 CC = g++
 
 # Compiler parameters
-CPPFLAGS = -std=c++11 -Wall -fno-rtti -fno-exceptions -c
+CPPFLAGS = -std=c++11 -Wall -fno-rtti -fexceptions -c
 
 # Delete command (for clean) depending on the OS
 ifeq ($(OS), Windows_NT)
@@ -11,7 +11,7 @@ else
 	RM = rm -f
 endif
 
-VERSION = v1.1.1
+VERSION = v1.2.0
 
 OBJS = main.o Game.o RandomGenerator.o
 TARGET = Bulls_and_Cows_$(VERSION).exe
