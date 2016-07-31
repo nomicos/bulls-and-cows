@@ -87,7 +87,11 @@ int Game::getUserInput()
                 iss.ignore(numeric_limits<streamsize>::max(), '\n');
                 throw "invalid format";
             }
-            if(rawInput.length() != 4)
+            if(rawInput.length() < 4)
+            {
+                throw "too short";
+            }
+            if(rawInput.length() > 4)
             {
                 throw "too long";
             }
