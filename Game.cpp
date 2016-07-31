@@ -70,7 +70,11 @@ int Game::getUserInput()
             isValid = true;
 
             string rawInput;
-            cout << "Please enter your guess #" << guessCounter+1 << ": ";
+            cout << "Please enter your guess ";
+            if(gameoverMode)
+                cout << "(" << guessCounter+1 << "/" << gameoverLimit << "): ";
+            else
+                cout << "#" << guessCounter+1 << ": ";
             getline(cin, rawInput);
 
             stringstream iss(rawInput);
