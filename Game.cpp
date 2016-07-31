@@ -76,6 +76,7 @@ int Game::getUserInput()
             else
                 cout << "#" << guessCounter+1 << ": ";
             getline(cin, rawInput);
+            cin.clear(); // Fix for when rawInput is '^Z'.
 
             stringstream iss(rawInput);
             iss >> input;
