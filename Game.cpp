@@ -64,29 +64,37 @@ int Game::getUserInput()
     bool isValid;
     do
     {
-        isValid = true; // Naive assumption.
-        string rawInput;
-        cout << "Please enter your guess: ";
-        getline(cin, rawInput);
-
-        stringstream iss(rawInput);
-        iss >> input;
-
-        if(cin.fail())
-        {   // If input's completely invalid...
-            // Clearing error state.
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            isValid = false;
-        }
-        if(rawInput.length() != 4 || !isCorrectNumber(input))
-        {   // If incorrect number, or additional input...
-            isValid = false;
-        }
-
-        if(!isValid)
+        try
         {
-            cout << "Invalid input. Try again.\n\n";
+            // Default assumption.
+            isValid = true;
+
+            string rawInput;
+            cout << "Please enter your guess #" << guessCounter+1 << ": ";
+            getline(cin, rawInput);
+
+            stringstream iss(rawInput);
+            iss >> input;
+
+            if(iss.fail())
+            {
+                iss.clear();
+                iss.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw "invalid format";
+            }
+            if(rawInput.length() != 4)
+            {
+                throw "too long";
+            }
+            if(!isCorrectNumber(input))
+            {
+                throw "invalid number";
+            }
+        }
+        catch(const char * e)
+        {
+            cerr << "Invalid input: " << e << ".\n\n";
+            isValid = false;
         }
     } while(!isValid);
     return input;
