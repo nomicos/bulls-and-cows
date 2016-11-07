@@ -1,35 +1,37 @@
-# Compiler name
+# Compiler name.
 CC = g++
 
-# Compiler parameters
-CPPFLAGS = -std=c++11 -Wall -fno-rtti -fexceptions -c
+# Compiler compilation parameters.
+FLAGS = -std=c++11 -Wall -fno-rtti -fexceptions
 
-# Delete command (for clean) depending on the OS
+# Delete command (for clean) depending on the OS.
 ifeq ($(OS), Windows_NT)
 	RM = del /Q
 else
 	RM = rm -f
 endif
 
+# Current game version.
 VERSION = v1.2.0
 
+# Objects to build.
 OBJS = main.o Game.o RandomGenerator.o
-TARGET = Bulls_and_Cows_$(VERSION).exe
 
+# Target executable.
+TARGET = Bulls_and_Cows_$(VERSION).exe
 
 all: $(TARGET)
 
 $(TARGET) : $(OBJS) 
-	$(CC) $(OBJS) -o $(TARGET)
+	$(CC) -o $@ $^
 
-main.o: main.cpp Game.cpp Game.hpp RandomGenerator.cpp RandomGenerator.hpp
-	$(CC) $(CPPFLAGS) main.cpp
+%.o: %.cpp
+	$(CC) -c $< $(FLAGS) -o $@
 
-Game.o: Game.cpp Game.hpp RandomGenerator.cpp RandomGenerator.hpp
-	$(CC) $(CPPFLAGS) Game.cpp
-
-RandomGenerator.o: RandomGenerator.cpp RandomGenerator.hpp
-	$(CC) $(CPPFLAGS) RandomGenerator.cpp
+# Dependency rules.
+main.o : RandomGenerator.hpp Game.hpp
+Game.o : Game.hpp RandomGenerator.hpp
+RandomGenerator.o : RandomGenerator.hpp
 
 clean:
 	$(RM) *.o *.exe
