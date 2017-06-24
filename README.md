@@ -18,8 +18,8 @@ You are free to use any part of the project under [the MIT license]
 As for the game, you can read more about it on Wikipedia:
 https://en.wikipedia.org/wiki/Bulls_and_Cows
 
-Some day I want to write a (yet another) PC version of [Mastermind]
-(https://en.wikipedia.org/wiki/Mastermind_(board_game)), but for
+Some day I want to write a (yet another) PC version of
+[Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)), but for
 that I'm going to need either a good graphics library for C++ or
 another programming language. At this moment I'm learning the
 Standard C++.
