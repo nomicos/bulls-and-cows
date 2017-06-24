@@ -12,8 +12,7 @@ the powers of:
 
 and some other technologies and concepts to me (and maybe somebody
 else, as the project is open source and the repository is public).
-You are free to use any part of the project under [the MIT license]
-(LICENSE.md).
+You are free to use any part of the project under [the MIT license](LICENSE.md).
 
 As for the game, you can read more about it on Wikipedia:
 https://en.wikipedia.org/wiki/Bulls_and_Cows
